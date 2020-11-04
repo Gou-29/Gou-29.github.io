@@ -1,0 +1,57 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(lubridate)
+data("ny_noaa")
+#data("instacart")
+#data("rest_inspec")
+
+ny_noaa <-
+  ny_noaa %>% 
+  mutate(year = year(date)) %>% 
+  mutate(tmax = as.numeric(tmax),
+         tmin = as.numeric(tmin)) %>% 
+  group_by(year) %>% 
+  summarise(tmax = mean(tmax, na.rm = T),
+            tmin = mean(tmin, na.rm = T))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### NY_NOAA 
+
+```{r}
+ny_noaa %>% 
+  plot_ly(y = ~tmax, x = ~tmin, color = ~year, type = "scatter")
+```
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ny_noaa %>% 
+  plot_ly(y = ~tmax, x = ~tmin, color = ~year, type = "scatter")
+```
+
+### Chart C
+
+```{r}
+ny_noaa %>% 
+  plot_ly(y = ~tmax, x = ~tmin, color = ~year, type = "scatter")
+```
+
