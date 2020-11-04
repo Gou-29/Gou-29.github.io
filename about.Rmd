@@ -1,11 +1,25 @@
 ---
-title: "About"
+title: "About Me"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
 ---
 
-# This is the about page
+In this page, you can find information about me:
 
+##  {.tabset}
+
+### Academic History
+
+
+
+### Internship Experience
+
+(tab content)
+
+
+### Hobbies
+
+
+## Updated CV
