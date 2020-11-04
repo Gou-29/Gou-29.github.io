@@ -3,7 +3,7 @@ title: "Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
-    vertical_layout: fill
+    vertical_layout: scroll
     
 ---
 
@@ -14,44 +14,86 @@ library(p8105.datasets)
 library(plotly)
 library(lubridate)
 data("ny_noaa")
-#data("instacart")
-#data("rest_inspec")
+data("instacart")
+data("rest_inspec")
 
 ny_noaa <-
   ny_noaa %>% 
-  mutate(year = year(date)) %>% 
+  mutate(year = year(date),
+         month = month(date)) %>% 
   mutate(tmax = as.numeric(tmax),
-         tmin = as.numeric(tmin)) %>% 
-  group_by(year) %>% 
+         tmin = as.numeric(tmin)) %>%
+  mutate(tmax = tmax/10,
+         tmin = tmin/10) %>% 
+  group_by(year, month) %>% 
   summarise(tmax = mean(tmax, na.rm = T),
-            tmin = mean(tmin, na.rm = T))
+            tmin = mean(tmin, na.rm = T)) %>% 
+  as_tibble() %>% 
+  mutate(month = as.factor(month)) %>% 
+  mutate(season = case_when(
+    month %in% c(1,2,3) ~ "Spring",
+    month %in% c(4,5,6) ~ "Summer",
+    month %in% c(7,8,9) ~ "Autumn",
+    month %in% c(10,11,12) ~"Winter"
+  )) %>% 
+  mutate(season = fct_relevel(season, "Spring", "Summer"))
+
+instacart<-
+  instacart %>% 
+  group_by(department,order_hour_of_day) %>%
+  summarise(count = n()) %>% 
+  as_tibble()
+instacart_sum <-
+  instacart %>% 
+  group_by(department) %>%
+  summarise(alpha = sum(count))
+instacart <-
+  left_join(instacart,instacart_sum) %>% 
+  mutate(alpha = count/alpha)
+
+rest_inspec <-
+  rest_inspec %>% 
+  group_by(boro, critical_flag) %>% 
+  summarise(count = n()) %>%
+  filter(boro != "Missing")
 ```
 
-Column {data-width=650}
+Column {data-width=600}
 -----------------------------------------------------------------------
 
-### NY_NOAA 
+### NY_NOAA
 
 ```{r}
-ny_noaa %>% 
-  plot_ly(y = ~tmax, x = ~tmin, color = ~year, type = "scatter")
+gg_ins =
+  instacart %>% 
+  ggplot(aes(x = department, y = order_hour_of_day)) +
+  geom_point(aes(color = department, size = count, alpha = alpha))+
+  theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust = 1)) 
+ggplotly(gg_ins)
 ```
 
 
-Column {data-width=350}
+Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Chart B
+### Instcart
 
 ```{r}
-ny_noaa %>% 
-  plot_ly(y = ~tmax, x = ~tmin, color = ~year, type = "scatter")
+gg_noaa =
+  ny_noaa %>% 
+  ggplot(aes(x=tmin, y=tmax)) +
+  facet_grid(~season) +
+  geom_point(aes(color = month),size = 0.5) 
+ggplotly(gg_noaa)
 ```
 
-### Chart C
+### NYC Restaurant Inspections
 
 ```{r}
-ny_noaa %>% 
-  plot_ly(y = ~tmax, x = ~tmin, color = ~year, type = "scatter")
+gg_rest =
+  rest_inspec %>% 
+  ggplot(aes(y = count, x = boro, fill = critical_flag)) +
+  geom_bar(position="stack", stat="identity", alpha = 0.8)
+ggplotly(gg_rest)
 ```
 
