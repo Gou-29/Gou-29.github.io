@@ -12,14 +12,67 @@ In this page, you can find information about me:
 
 ### Academic History
 
+Columbia University, Mailman School of Public healt
+
+Master of Science 
+
+* Major: Biostatistics
+
+* Major Courses: Data science, Biostatistic methods
+
+Beijing Institute of Technology                                                
+
+Bachelor of Arts                                                          
+
+* Major: Accounting
+
+* Major Courses: Audit and Assurance, Business and Finance, Probability and Mathematical Statistics, Management of Information Systems, International Financial Reporting System 
+
+Graduation thesis：
+
+* Value relevance of multiple-segment firms: Based on data of 50 listed company in China, modeled the business value of the firm based on segment level business data, proved an incremental value relevance of them.
+
+University of Reading                                                         
+
+Bachelor of Arts (Honored)                                                
+
+* Major: Accounting
+
+London School of Economics and Political Science                                 
+
+* Summer School Program                                                       
+
+* Courses: Econometric (Grade: A+)
+
 
 
 ### Internship Experience
 
-(tab content)
+
+POWERCHINA Resources Ltd, Accounting Assistant                                                         
+
+* Participated in the maintenance and recording of ledger accounts and daily transactions
+
+* Designed an automated accounting and correction program with Excel Spreadsheets, reduced the processing time of a specific transaction significantly.  
+
+* Facilitated the incorporation of new ERP system within the Corporation.  
+
+PRICEWATERHOUSECOOPERS CHINA, Consultant Assistant Intern                                              
+
+* Performed in-depth research on the economic impact of the construction of industrial parks
+
+* Analyzed the business environment, feasibility (especially in comparing and contrasting the paralleled industrial parks and analyzing their strength & weakness) and prospect of the project, wrote the chapter “Analysis of similar projects” in the feasibility report using PESTEL analysis and SWOT analysis
+
 
 
 ### Hobbies
 
+I regard art as an important part of my life. I have been practicing piano for many years and will continue to live this rhythm. The composer I admire most is Chopin. At the same time, I also go to the concert regularly
+
+As a Chinese, I am also very proud of the culture and art of my country. I once studied the art of seal cutting, and I still practice it in my spare time.
+
+Fun fact: I am a Lego Zealot!
 
 ## Updated CV
+
+You can download my updated CV (here)[] (Updated on 2020/11)
