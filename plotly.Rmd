@@ -61,7 +61,7 @@ rest_inspec <-
 Column {data-width=600}
 -----------------------------------------------------------------------
 
-### NY_NOAA
+### Instcart
 
 ```{r}
 gg_ins =
@@ -69,6 +69,7 @@ gg_ins =
   ggplot(aes(x = department, y = order_hour_of_day)) +
   geom_point(aes(color = department, size = count, alpha = alpha))+
   theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust = 1)) 
+
 ggplotly(gg_ins)
 ```
 
@@ -76,7 +77,7 @@ ggplotly(gg_ins)
 Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Instcart
+### NY_NOAA
 
 ```{r}
 gg_noaa =
